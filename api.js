@@ -10,9 +10,7 @@ router
     .route('/contact')
         .get(function (req, res) {
             try{
-                if (!req.user) req.user={};
-                if (!req.user.id) req.user.id="1";
-                db.find({ userId: parseInt(req.user.id, 10) }, function (err, data) {
+                db.find({  }, function (err, data) {
                     if (err) console.log("db.find: "+err.message);
                     res.json(data);
                 });
