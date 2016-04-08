@@ -1,7 +1,9 @@
-angular.module('ContactsApp', [])
-    .run(function ($rootScope) {
-        var maMsg= "Hello Arni, its app.js-$r00t[e]Scope.message";
-        console.log(maMsg);
-        $rootScope.message = maMsg;
-         
+angular.module('ContactsApp', ['ngRoute', 'ngResource'])
+    .config(function ($routeProvider, $locationProvider) {
+        $routeProvider
+            .when('/contacts', {
+                controller: 'ListController',
+                templateUrl: 'views/list.html'
+            });
+        $locationProvider.html5Mode(true);
     });
