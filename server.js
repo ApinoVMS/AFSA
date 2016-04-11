@@ -8,6 +8,7 @@ app.use(express.static('./public'))
     //.use(users)
     .use('/api', api)
     .get('*', function (req, res) {
+        console.log("3011");
     //     if (!req.user) { res.redirect('/login'); }  else {  
     	//res.sendFile('public/main.html'); 
         //res.send('Hello You'); 

@@ -29,14 +29,23 @@ router
 
 router
     .param('id', function (req, res, next) {
+        
         req.dbQuery = { id: parseInt(req.params.id, 10) };
+        console.log("req.dbQuery=");
+        console.log(req.dbQuery);
         next();
     })
     .route('/contact/:id')
         .get(function (req, res) {
+            console.log("db.findOne");
+            console.log(req.dbQuery);
             db.findOne(req.dbQuery, function (err, data) {
+                if (err) console.log(err.message);
+                console.log(data);
                 res.json(data);    
             });
+            
+        
         })
         .put(function (req, res) {
             var contact = req.body;
